@@ -4,7 +4,7 @@ import react, { useState } from "react";
 function App() {
   const [name, setName] = useState("Mukesh");
   const changeName = () => {
-    if (name === "Mukesh") setName("Jugnu");
+    if (name === "Mukesh") setName("Raja");
     else setName("Mukesh");
   };
 

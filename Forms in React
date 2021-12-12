@@ -1,0 +1,90 @@
+import React, { useState } from "react";
+
+const App = () => {
+  const [userRegistration, setUserRegistration] = useState({
+    name: " ",
+    email: " ",
+    password: " ",
+    phone: " ",
+  });
+  const [newArray, setNewrray] = useState([]);
+  const handleInput = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUserRegistration({ ...userRegistration, [name]: value });
+    console.log(name, value);
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newrecord = {
+      ...userRegistration,
+      id: new Date().getTime().toString(),
+    };
+    setNewrray([...newArray, newrecord]);
+    setUserRegistration({ name: " ", email: " ", password: " ", phone: " " });
+  };
+  return (
+    <>
+      <form action=" " onSubmit={handleSubmit}>
+        <h1 className="heading"> Registration Form</h1>
+        <div className="Component">
+          <label htmlFor="name">Name :</label>
+          <input
+            type="text"
+            autoComplete="off"
+            name="name"
+            value={userRegistration.name}
+            onChange={handleInput}
+          ></input>
+        </div>
+        <div className="Component">
+          <label htmlFor="email">Email id :</label>
+          <input
+            type="email"
+            autoComplete="off"
+            name="email"
+            value={userRegistration.email}
+            onChange={handleInput}
+          ></input>
+        </div>
+        <div className="Component">
+          <label htmlFor="password">Password :</label>
+          <input
+            type="password"
+            autoComplete="off"
+            name="password"
+            value={userRegistration.password}
+            onChange={handleInput}
+          ></input>
+        </div>
+        <div className="Component">
+          <label htmlFor="phone">Phone No :</label>
+          <input
+            type="number"
+            autoComplete="off"
+            name="phone"
+            value={userRegistration.phone}
+            onChange={handleInput}
+          ></input>
+        </div>
+        <div className="heading">
+          <button type="submit"> Submit</button>
+        </div>
+      </form>
+      <div>
+        {newArray.map((curelement) => {
+          return (
+            <div>
+              <p>
+                NAME:{curelement.name}, EMAIL:{curelement.email}, PASSWORD:
+                {curelement.password}, PHONE:{curelement.phone}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export default App;
